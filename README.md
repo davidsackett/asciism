@@ -1,3 +1,5 @@
+Python library for implementing state machines using ascii art
+
 # Ascii state machines
 
 This library aims to allow Python classes to implement state machines by 
