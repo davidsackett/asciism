@@ -24,9 +24,15 @@ cd'''
         assert(d.canvas == ['ab', 'cd'])
 
     def test_diag_iter(self):
-        d = Diagram('''ab
+        d1 = Diagram('''ab
 cd''')
-        assert(list(d) == [(0, 0, 'a'), (0, 1, 'b'), (1, 0, 'c'), (1, 1, 'd')]) 
+        assert(list(d1) == [(0, 0, 'a'), (1, 0, 'b'), (0, 1, 'c'), (1, 1, 'd')]) 
+
+        # test that indexing matches iter
+        for x, y, p in d1:
+            print(x, y, p, d1[x, y])
+            assert(p == d1[x, y])
+        
 
 def test_points_eq():
     assert(Point(1,1) == Point(1,1))
@@ -47,6 +53,5 @@ def test_parse_boxes():
     diag = Diagram(box)
     print(diag)
     #boxes = diag.box
-    #import pdb; pdb.set_trace()
     boxes = Box.parse(diag)
     assert(boxes == [Box(Point(1,5), Point(4, 9))])

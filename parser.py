@@ -71,6 +71,7 @@ class Diagram:
         return '\n'.join(self.canvas)
 
     def __iter__(self):
+        # TODO __iter__ should use __getitem__
         for y, row in enumerate(self.canvas):
             for x, col in enumerate(row):
                 yield x, y, col
@@ -81,6 +82,6 @@ class Diagram:
         # rather than IndexError to avoid lots of catching the exception
         # TODO how to gracefully handle IndexErrors? Just return None?
         try:
-            return self.canvas[x][y]
+            return self.canvas[y][x]
         except IndexError:
             return None
