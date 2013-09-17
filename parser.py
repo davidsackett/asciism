@@ -55,7 +55,7 @@ class Box:
         #print(top_left_candidates)
         #print(bottom_right_candidates)
 
-        # try all combination of top right and bottom left corners to see if
+        # try all combinations of top right and bottom left corners to see if
         # the sides are unbroken
         boxes = []
         for top_left_candidate in top_left_candidates:
@@ -95,6 +95,13 @@ class Box:
     def __eq__(self, other):
         return (self.top_left == other.top_left and 
                 self.bottom_right == other.bottom_right)
+
+    def __repr__(self):
+        return 'Box({0}, {1})'.format(self.top_left, self.bottom_right) 
+
+class Line:
+    def __init__(self):
+        pass
 
 class Diagram:
     '''represents a complete ascii art diagram'''

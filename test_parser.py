@@ -88,6 +88,36 @@ def test_parse_boxes():
     diag = Diagram(box)
     assert([] == Box.parse(diag))
 
+    # 2 boxes
+    box = '''
+    +---+ +--+
+    |   | |  |
+    |   | +--+
+    +---+
+
+'''
+    diag = Diagram(box)
+    boxes = Box.parse(diag)
+    assert(boxes == [Box(Point(4, 1, '+'), Point(8, 4, '+')),
+                     Box(Point(10, 1, '+'), Point(13, 3, '+'))])
+
+def test_transition():
+    # 2 boxes
+    box = '''
+    +---+    +---+
+    | A |--->| B |
+    +---+    +---+
+
+'''
+    diag = Diagram(box)
+    boxes = Box.parse(diag)
+    print(boxes)
+    
+    assert(boxes == [Box(Point(4, 1, '+'), Point(8, 3, '+')),
+                     Box(Point(13, 1, '+'), Point(16, 3, '+'))])
+
+
+
 def xtest_parses_diagram_with_uneven_rows():
     # TODO parse diagram with uneven rows see below. The second row of box is
     # one character shorter than the other rows
